@@ -8,6 +8,8 @@ const dispatchGlobalEvent = (eventName, opts) => {
   // @see http://stackoverflow.com/questions/26596123/internet-explorer-9-10-11-event-constructor-doesnt-work
   let event
 
+  if (typeof window === 'undefined') { return }
+
   if (typeof window.CustomEvent === 'function') {
     event = new window.CustomEvent(eventName, { detail: opts })
   } else {
